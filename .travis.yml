@@ -15,10 +15,10 @@ matrix:
             # - ubuntu-toolchain-r-test
             - debian-sid
           packages:
-            - cmake
+            #- cmake
             - curl
             #- freeglut3-dev
-            - g++
+            #- g++
             - git
             #- gperf
             #- libbz2-dev
@@ -28,16 +28,15 @@ matrix:
             #- libglu1-mesa-dev
             #- libosmesa6-dev
             #- libssl-dev
-            - libstdc++6
-            - libstdc++6-dev
+            #- libstdc++6
+            #- libstdc++6-dev
             #- libstdc++6-4.7-dev
             #- libxmu-dev
             #- libxmu6
-            - python-virtualenv
+            #- python-virtualenv
       env:
         - LD_DEBUG=files
         - CMD="./mach build -d --verbose"
-      language: c
 
 cache:
   directories:
