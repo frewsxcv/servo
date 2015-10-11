@@ -12,15 +12,14 @@ matrix:
     - addons:
         apt:
           sources:
-            - ubuntu-toolchain-r-test
+            # - ubuntu-toolchain-r-test
             - debian-sid
           packages:
             - cmake
             - curl
             #- freeglut3-dev
-            - g++-4.8
+            - g++
             - git
-            - libc++-dev
             #- gperf
             #- libbz2-dev
             #- libfreetype6-dev
@@ -30,6 +29,7 @@ matrix:
             #- libosmesa6-dev
             #- libssl-dev
             - libstdc++6
+            - libstdc++6-dev
             #- libstdc++6-4.7-dev
             #- libxmu-dev
             #- libxmu6
