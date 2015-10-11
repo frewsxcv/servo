@@ -37,6 +37,7 @@ matrix:
       env:
         - LD_DEBUG=files
         - CMD="./mach build -d --verbose"
+      language: c
 
 cache:
   directories:
