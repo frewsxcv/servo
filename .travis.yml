@@ -2,10 +2,8 @@ language: python
 sudo: false
 
 script:
-  - strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6 | grep GLIBCXX
-  - strings /usr/lib/gcc/x86_64-linux-gnu/4.6/libstdc++.so | grep GLIBCXX
-  - strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.16 | grep GLIBCXX
-  - find / -name "*libstdc++.so*" 2> /dev/null
+  - string /lib/x86_64-linux-gnu/libc.so.6 | grep GLIBC
+  - find / -name "*libc.so*" 2> /dev/null
   - sh -c "$CMD"
 
 matrix:
