@@ -33,6 +33,7 @@ matrix:
             #- libglu1-mesa-dev
             #- libosmesa6-dev
             #- libssl-dev
+            - libc6
             - libstdc++5
             - libstdc++6
             - libstdc++6-dev
