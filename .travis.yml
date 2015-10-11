@@ -24,6 +24,7 @@ matrix:
             #- freeglut3-dev
             - g++
             - git
+            - gcc-5
             #- gperf
             #- libbz2-dev
             #- libfreetype6-dev
