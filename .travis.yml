@@ -19,6 +19,7 @@ matrix:
             - curl
             #- freeglut3-dev
             #- g++
+            - gcc-5
             - git
             #- gperf
             #- libbz2-dev
