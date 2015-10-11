@@ -11,9 +11,9 @@ matrix:
         - CMD="./mach test-tidy"
     - addons:
         apt:
-          #sources:
+          sources:
           #  - debian-sid
-          #  - ubuntu-toolchain-r-test
+            - ubuntu-toolchain-r-test
           packages:
             - cmake
             - curl
