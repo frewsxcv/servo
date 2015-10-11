@@ -22,7 +22,6 @@ matrix:
             - curl
             #- freeglut3-dev
             #- g++
-            - gcc-5
             - git
             #- gperf
             #- libbz2-dev
@@ -33,7 +32,6 @@ matrix:
             #- libosmesa6-dev
             #- libssl-dev
             - libstdc++6
-            - libstdc++6-4.7-dev
             #- libstdc++6-dev
             #- libstdc++6-4.7-dev
             #- libxmu-dev
