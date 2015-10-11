@@ -18,7 +18,7 @@ matrix:
             - cmake
             - curl
             #- freeglut3-dev
-            - g++
+            - g++-4.8
             - git
             #- gperf
             #- libbz2-dev
@@ -35,6 +35,10 @@ matrix:
             - python-virtualenv
       env:
         - CMD="./mach build -d --verbose"
+
+cache:
+  directories:
+    - $HOME/.cargo
 
 branches:
   only:
