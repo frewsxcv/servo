@@ -17,7 +17,7 @@ matrix:
         apt:
           sources:
             - ubuntu-toolchain-r-test
-            - debian-sid
+            #- debian-sid
           packages:
             #- cmake
             - curl
