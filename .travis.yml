@@ -1,24 +1,53 @@
 language: python
-sudo: 9000
-services:
-  - docker
-
-before_install:
-  - if [ "$DOCKER" = "1" ]; then docker build -t servo etc/ci/; fi
+sudo: false
 
 script:
-  - if [ "$DOCKER" = "0" ]; then sh -c "$CMD"; fi
-  - if [ "$DOCKER" = "1" ]; then docker run -tv `pwd`:/build servo sh -c "$CMD"; fi
+  - strings /lib/x86_64-linux-gnu/libc.so.6 | grep GLIBC
+  - strings /usr/lib/x86_64-linux-gnu/libc.so | grep GLIBC
+  - find / -name "*libc.so*" 2> /dev/null
+  - echo $LD_LIBRARY_PATH
+  - export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH
+  - sh -c "$CMD"
 
 matrix:
   fast_finish: true
   include:
     - env:
-      - CMD="./mach test-tidy"
-      - DOCKER=0
-    - env:
-      - CMD="./mach build -d --verbose"
-      - DOCKER=1
+        - CMD="./mach test-tidy"
+    - addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+            #- debian-sid
+          packages:
+            #- cmake
+            - curl
+            #- freeglut3-dev
+            - g++
+            - git
+            - gcc-5
+            #- gperf
+            #- libbz2-dev
+            #- libfreetype6-dev
+            #- libgl1-mesa-dri
+            #- libglib2.0-dev
+            #- libglu1-mesa-dev
+            #- libosmesa6-dev
+            #- libssl-dev
+            - libc6
+            - libstdc++5
+            - libstdc++6
+            - libstdc++6-dev
+            - libstdc++6-4.7-dev
+            #- libxmu-dev
+            #- libxmu6
+            #- python-virtualenv
+      env:
+        - CMD="./mach build -d --verbose"
+
+cache:
+  directories:
+    - $HOME/.cargo
 
 branches:
   only:
