@@ -2,7 +2,8 @@ language: python
 sudo: false
 
 script:
-  - string /lib/x86_64-linux-gnu/libc.so.6 | grep GLIBC
+  - strings /lib/x86_64-linux-gnu/libc.so.6 | grep GLIBC
+  - strings /usr/lib/x86_64-linux-gnu/libc.so | grep GLIBC
   - find / -name "*libc.so*" 2> /dev/null
   - sh -c "$CMD"
 
