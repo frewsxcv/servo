@@ -35,6 +35,7 @@ matrix:
             #- libxmu6
             - python-virtualenv
       env:
+        - LD_DEBUG=files
         - CMD="./mach build -d --verbose"
 
 cache:
