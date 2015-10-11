@@ -2,6 +2,7 @@ language: python
 sudo: false
 
 script:
+  - strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6 | grep GLIBCXX
   - sh -c "$CMD"
 
 matrix:
