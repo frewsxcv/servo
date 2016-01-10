@@ -8,11 +8,13 @@ matrix:
       cache: false
     - sudo: 9000
       dist: trusty
+      install:
+         - ./mach build --release --verbose
       script:
-         - ./mach build -d --verbose
-         - ./mach test-unit
+         - ./mach test-wpt --release
          - bash etc/ci/lockfile_changed.sh
          - bash etc/ci/manifest_changed.sh
+         - ./mach test-unit
       cache:
         directories:
           - .cargo
