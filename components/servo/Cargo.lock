@@ -48,6 +48,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "afl"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+dependencies = [
+ "gcc 0.3.26 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
+name = "afl-plugin"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+
+[[package]]
 name = "aho-corasick"
 version = "0.5.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1069,6 +1082,7 @@ dependencies = [
 name = "layout"
 version = "0.0.1"
 dependencies = [
+ "afl-plugin 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "app_units 0.2.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "azure 0.4.3 (git+https://github.com/servo/rust-azure)",
  "bitflags 0.3.3 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -1299,6 +1313,7 @@ dependencies = [
 name = "net"
 version = "0.0.1"
 dependencies = [
+ "afl 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "brotli 0.3.20 (git+https://github.com/ende76/brotli-rs)",
  "cookie 0.2.4 (registry+https://github.com/rust-lang/crates.io-index)",
  "devtools_traits 0.0.1",
@@ -1789,6 +1804,7 @@ dependencies = [
 name = "script"
 version = "0.0.1"
 dependencies = [
+ "afl-plugin 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "angle 0.1.0 (git+https://github.com/emilio/angle?branch=servo)",
  "app_units 0.2.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "bitflags 0.3.3 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -2282,6 +2298,8 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 name = "util"
 version = "0.0.1"
 dependencies = [
+ "afl 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "afl-plugin 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "app_units 0.2.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "backtrace 0.2.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "bitflags 0.3.3 (registry+https://github.com/rust-lang/crates.io-index)",

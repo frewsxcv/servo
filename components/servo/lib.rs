@@ -233,7 +233,7 @@ fn create_constellation(opts: opts::Opts,
     // Send the URL command to the constellation.
     match opts.url {
         Some(url) => {
-            constellation_chan.send(ConstellationMsg::InitLoadUrl(url)).unwrap();
+            constellation_chan.send(ConstellationMsg::InitLoadUrl("file:///tmp/a".parse().unwrap())).unwrap();
         },
         None => ()
     };

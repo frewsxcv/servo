@@ -506,7 +506,7 @@ pub fn default_opts() -> Opts {
         profile_heartbeats: false,
         disable_share_style_cache: false,
         convert_mouse_to_touch: false,
-        exit_after_load: false,
+        exit_after_load: true,
         no_native_titlebar: false,
         enable_vsync: true,
         use_webrender: false,

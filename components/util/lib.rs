@@ -13,9 +13,11 @@
 #![feature(step_by)]
 
 #![plugin(heapsize_plugin, plugins, serde_macros)]
+#![plugin(afl_plugin)]
 
 #![deny(unsafe_code)]
 
+extern crate afl;
 extern crate app_units;
 extern crate backtrace;
 #[allow(unused_extern_crates)]

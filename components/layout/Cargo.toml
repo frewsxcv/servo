@@ -45,3 +45,4 @@ time = "0.1"
 unicode-bidi = "0.2"
 unicode-script = { version = "0.1", features = ["harfbuzz"] }
 url = {version = "1.0.0", features = ["heap_size"]}
+afl-plugin = "0.1"

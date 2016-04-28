@@ -4,6 +4,7 @@
 
 use about_loader;
 use mime_classifier::MIMEClassifier;
+use mime;
 use mime_guess::guess_mime_type;
 use net_traits::ProgressMsg::{Done, Payload};
 use net_traits::{LoadConsumer, LoadData, Metadata, NetworkError};
@@ -12,7 +13,7 @@ use resource_thread::{send_error, start_sending_sniffed_opt};
 use std::borrow::ToOwned;
 use std::error::Error;
 use std::fs::File;
-use std::io::Read;
+use std::io::{self, Read};
 use std::path::PathBuf;
 use std::sync::Arc;
 use url::Url;
@@ -54,6 +55,7 @@ fn read_all(reader: &mut File, progress_chan: &ProgressSender, cancel_listener: 
     Ok(LoadResult::Cancelled)
 }
 
+/*
 fn get_progress_chan(load_data: LoadData, file_path: PathBuf,
                      senders: LoadConsumer, classifier: Arc<MIMEClassifier>, buf: &[u8])
                      -> Result<ProgressSender, ()> {
@@ -62,6 +64,7 @@ fn get_progress_chan(load_data: LoadData, file_path: PathBuf,
     metadata.set_content_type(Some(&mime_type));
     return start_sending_sniffed_opt(senders, metadata, classifier, buf, load_data.context);
 }
+*/
 
 pub fn factory(load_data: LoadData,
                senders: LoadConsumer,
@@ -69,6 +72,7 @@ pub fn factory(load_data: LoadData,
                cancel_listener: CancellationListener) {
     assert!(load_data.url.scheme() == "file");
     spawn_named("file_loader".to_owned(), move || {
+        /*
         let file_path = match load_data.url.to_file_path() {
             Ok(file_path) => file_path,
             Err(_) => {
@@ -96,6 +100,20 @@ pub fn factory(load_data: LoadData,
             }
             return;
         }
+        */
+        let mut buffer = vec![];
+        io::stdin().read_to_end(&mut buffer).unwrap();
+        let mut metadata = Metadata::default(load_data.url);
+        //let file_path = "./hi".into();
+        //let mime_type = guess_mime_type(file_path.as_path());
+        let mime_type: mime::Mime = "text/html;charset=utf-8".parse().unwrap();
+        metadata.set_content_type(Some(&mime_type));
+        let progress_chan = start_sending_sniffed_opt(senders, metadata, classifier, &buffer, load_data.context).unwrap();
+        progress_chan.send(Payload(buffer)).unwrap();
+        progress_chan.send(Done(Ok(()))).unwrap();
+        // TODO: try accessing STDIN here
+        // TODO: create a new loader maybe? fuzz_loder?
+        /*
         match read_block(reader) {
             Ok(ReadStatus::Partial(buf)) => {
                 let progress_chan = get_progress_chan(load_data, file_path,
@@ -119,5 +137,6 @@ pub fn factory(load_data: LoadData,
                 send_error(load_data.url, NetworkError::Internal(e), senders);
             }
         }
+        */
     });
 }

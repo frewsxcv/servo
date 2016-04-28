@@ -9,7 +9,6 @@
 #![feature(plugin)]
 #![plugin(plugins)]
 
-#![deny(unsafe_code)]
 
 extern crate brotli;
 extern crate cookie as cookie_rs;
@@ -37,6 +36,7 @@ extern crate util;
 extern crate uuid;
 extern crate webrender_traits;
 extern crate websocket;
+extern crate afl;
 
 pub mod about_loader;
 pub mod chrome_loader;
