@@ -221,6 +221,18 @@ impl<T: Runnable + Send> Runnable for CancellableRunnable<T> {
     }
 }
 
+pub struct SomeStruct<T: Nameable> {
+    t: T,
+}
+
+impl<T: Nameable> Nameable for SomeStruct<T> {
+    const NAME: &'static str = T::NAME;
+}
+
+pub trait Nameable {
+    const NAME: &'static str = "generic runnable";
+}
+
 pub trait Runnable {
     fn is_cancelled(&self) -> bool { false }
     fn name(&self) -> &'static str { "generic runnable" }
